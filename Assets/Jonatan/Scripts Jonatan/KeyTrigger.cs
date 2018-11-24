@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class KeyTrigger : MonoBehaviour
 {
-    void OnTriggerStay(Collider other)
+    void OnTriggerEnter(Collider other)
     {
 
         if (other.gameObject.tag == "Key")
         {
-            switch (other.gameObject.GetComponent<KeyMovement>().mykey) {
+
+            other.gameObject.GetComponent<KeyMovement>().canDestroy = true;
+            /*switch (other.gameObject.GetComponent<KeyMovement>().mykey) {
 
 
                 case KeyMovement.Keys.A:
@@ -39,7 +41,7 @@ public class KeyTrigger : MonoBehaviour
 
 
 
-            }
+            }*/
 
 
         }
