@@ -1,0 +1,29 @@
+[
+    {
+        "controlValue": 0,
+		"phrases": 
+		[
+			"Hola que tal?",
+			"Bien y tu?",
+			"Ferpecto"
+		]
+    },
+    {
+		"controlValue": 5,
+		"phrases": 
+		[
+			"Uno",
+			"Dos",
+			"Tres"
+		]
+    },
+    {
+        "controlValue": 10,
+		"phrases": 
+		[
+			"Game",
+			"Jam",
+			"Barcelona"
+		]
+    }
+]   
