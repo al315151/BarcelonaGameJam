@@ -1,15 +1,14 @@
 fileFormatVersion: 2
-guid: e6aa4d98538c68346bce61294052ca95
+guid: b5f02d788b15d5d4994b1bdfb45c8078
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2100000: 8Gris medio
-    2100002: 04Pantalla
+    2100000: No Name
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Lampara
+    4300000: TeteraDeMierda
   externalObjects: {}
   materials:
     importMaterials: 1
