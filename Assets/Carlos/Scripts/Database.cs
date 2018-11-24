@@ -7,13 +7,14 @@ using System;
 public class Database : MonoBehaviour
 {
 
-    public Dictionary<float, List<String>> pharsesDatabase = new Dictionary<float, List<string>>();
+    public Dictionary<float, List<string>> pharsesDatabase = new Dictionary<float, List<string>>();
     private JSONObject phrasesData;
 
     private void Start()
     {
         phrasesData = new JSONObject(File.ReadAllText(Application.dataPath + "/StreamingAssets/Frases.json"));
         ConstructPhrasesDatabase(phrasesData);
+        Debug.Log("Vamos a ver");
     }
 
     void ConstructPhrasesDatabase(JSONObject obj)
@@ -21,7 +22,8 @@ public class Database : MonoBehaviour
         switch (obj.type)
         {
             case JSONObject.Type.OBJECT:
-                ExtractPhrases(Int32.Parse(obj.keys[0]), obj["phrases"].list);
+                float a = obj[obj.keys[0]].n;
+                ExtractPhrases(a, obj["phrases"].list);
                 break;
             case JSONObject.Type.ARRAY:
                 foreach (JSONObject j in obj.list)
@@ -44,7 +46,7 @@ public class Database : MonoBehaviour
         }
     }
 
-    void ExtractPhrases(int v, List<JSONObject> list)
+    void ExtractPhrases(float v, List<JSONObject> list)
     {
         List<String> toAdd = new List<string>();
         foreach (JSONObject obj in list)
