@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 19aca50721b107a4baf622408711aec5
+guid: 034cd1b6f373ec64fbc15b4258f4cc6e
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -9,7 +9,7 @@ ModelImporter:
     2100002: 01Blanco
     2300000: //RootNode
     3300000: //RootNode
-    4300000: capD
+    4300000: capS
   externalObjects: {}
   materials:
     importMaterials: 1
