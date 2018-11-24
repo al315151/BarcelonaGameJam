@@ -1,20 +1,23 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DesktopWindowBehaviour : MonoBehaviour
 {
 
     public RectTransform windowRect;
     public GameObject windowContent;
-    public GameObject window_center_pos;
     RectTransform windowed_RectTransform;
     RectTransform fullScreen_RectTransform;
     bool Maximized;
-
-    bool first_update = true;
-
+    
     Vector3 window_position_offset;
+
+    [Header("Access from desktop Behaviour")]
+    public RawImage Game_background;
+    public Image Icon;
+    DesktopBehaviour desktopBehaviour_Reference;
 
     // Start is called before the first frame update
     void Start()
@@ -22,12 +25,16 @@ public class DesktopWindowBehaviour : MonoBehaviour
         Maximized = false;
         setAuxiliarRectTransforms();
         window_position_offset = GetComponentInParent<RectTransform>().position;
+        desktopBehaviour_Reference = GetComponentInParent<DesktopBehaviour>();
     }
 
     // Update is called once per frame
     void Update()
     {
-                
+         if (Input.GetKeyDown(KeyCode.O))
+        {
+            this.gameObject.SetActive(false);
+        }
     }
 
     public void panWindow()
@@ -51,12 +58,12 @@ public class DesktopWindowBehaviour : MonoBehaviour
 
     public void MinimizeWindow()
     {
-
+        desktopBehaviour_Reference.AddToMinimizedApps(this.name);
     }
 
     public void CloseWindow()
     {
-
+        this.gameObject.SetActive(false);
     }
 
 
