@@ -1,14 +1,15 @@
 fileFormatVersion: 2
-guid: 10d11a90a6872f14ca370a73aa71c726
+guid: 083f9ab5159ad3d43a35a45b0d7f0ac5
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2100000: No Name
+    2100000: 02Marron carton
+    2100002: 03Gris
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Folio
+    4300000: Armario
   externalObjects: {}
   materials:
     importMaterials: 1

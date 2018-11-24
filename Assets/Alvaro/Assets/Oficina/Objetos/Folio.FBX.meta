@@ -1,15 +1,14 @@
 fileFormatVersion: 2
-guid: a90990b4a9fbaa84cb67e180121a989b
+guid: 10d11a90a6872f14ca370a73aa71c726
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
     2100000: 01Blanco
-    2100002: 05Marron madera
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Libro
+    4300000: Folio
   externalObjects: {}
   materials:
     importMaterials: 1
