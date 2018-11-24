@@ -4,9 +4,9 @@ using System.Collections.Generic;
 public static class Functions
 {
     //https://stackoverflow.com/questions/273313/randomize-a-listt
+    private static Random rng = new Random();
     public static void Shuffle<T>(this IList<T> list)
     {
-        Random rng = new Random();
         int n = list.Count;
         while (n > 1)
         {
