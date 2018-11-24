@@ -3,30 +3,27 @@
         "controlValue": 0,
 		"phrases": 
 		[
-			"Hola que tal?",
-			"Bien y tu?",
-			"Ferpecto",
-			"Hola Fernando",
-			"Una nueva frase"
+			"B1",
+			"B2",
+			"B3"
 		]
     },
     {
 		"controlValue": 5,
 		"phrases": 
 		[
-			"Uno",
-			"Dos",
-			"Tres",
-			"Olga es muy guapa"
+			"Cuatro",
+			"Cinco",
+			"Seis"
 		]
     },
     {
         "controlValue": 10,
 		"phrases": 
 		[
-			"Game",
-			"Jam",
-			"Barcelona"
+			"Juego",
+			"Atasco",
+			"Girona"
 		]
     }
 ]   
