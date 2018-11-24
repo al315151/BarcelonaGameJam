@@ -22,9 +22,11 @@ public class DesktopBehaviour : MonoBehaviour
     [Header("Programs Public References")]
     //Reference to the programs.
     public DesktopWindowBehaviour twitterProgram_GO;
-    public DesktopWindowBehaviour gameFolderProgram_GO;
     public DesktopWindowBehaviour codeProgram_GO;
-    public DesktopWindowBehaviour shopProgram_GO;
+    public DesktopWindowBehaviour gameFolderProgram_GO;
+    public DesktopWindowBehaviour vaperisProgram_GO;
+    public DesktopWindowBehaviour vPotatoProgram_GO;
+    public DesktopWindowBehaviour FranEatProgram_GO;
 
     [Header("Images Public References")]
     //Image public references
@@ -43,9 +45,7 @@ public class DesktopBehaviour : MonoBehaviour
     [Header("Desktop Management Variables")]
     public Image backgroundImage;
     DesktopState currentState;
-    RectTransform aux_rect;
-
-
+   
     // Start is called before the first frame update
     void Start()
     {
@@ -85,32 +85,36 @@ public class DesktopBehaviour : MonoBehaviour
 
     }
 
-    public void AddToMinimizedApps(string name)
+    public void AddToMinimizedApps(string window_name)
     {
        for (int i = 0; i < minimizedElements_GO.Length; i++)
         {
-            if (minimizedElements_GO[i].name == gameFolderProgram_GO.name)
+            if (minimizedElements_GO[i].name == gameFolderProgram_GO.name &&
+                minimizedElements_GO[i].name == window_name)
             {
                 minimizedElements_GO[i].SetActive(true);
                 gameFolderProgram_GO.gameObject.SetActive(false);
                 break;
             }
-            else if (minimizedElements_GO[i].name == shopProgram_GO.name)
+            else if (minimizedElements_GO[i].name == vaperisProgram_GO.name &&
+                minimizedElements_GO[i].name == window_name)
             {
                 minimizedElements_GO[i].SetActive(true);
-                shopProgram_GO.gameObject.SetActive(false);
+                vaperisProgram_GO.gameObject.SetActive(false);
                 break;
             }
-            else if (minimizedElements_GO[i].name == codeProgram_GO.name)
+            else if (minimizedElements_GO[i].name == vPotatoProgram_GO.name &&
+                minimizedElements_GO[i].name == window_name)
             {
                 minimizedElements_GO[i].SetActive(true);
-                codeProgram_GO.gameObject.SetActive(false);
+                vPotatoProgram_GO.gameObject.SetActive(false);
                 break;
             }
-            else if (minimizedElements_GO[i].name == twitterProgram_GO.name)
+            else if (minimizedElements_GO[i].name == FranEatProgram_GO.name &&
+                minimizedElements_GO[i].name == window_name)
             {
                 minimizedElements_GO[i].SetActive(true);
-                twitterProgram_GO.gameObject.SetActive(false);
+                FranEatProgram_GO.gameObject.SetActive(false);
                 break;
             }
         }
@@ -121,28 +125,32 @@ public class DesktopBehaviour : MonoBehaviour
     {
         for (int i = 0; i < minimizedElements_GO.Length; i++)
         {
-            if (minimizedElements_GO[i].name == gameFolderProgram_GO.name)
+            if (minimizedElements_GO[i].name == gameFolderProgram_GO.name &&
+                minimizedElements_GO[i].name ==other.name)
             {
                 minimizedElements_GO[i].SetActive(false);
                 gameFolderProgram_GO.gameObject.SetActive(true);
                 break;
             }
-            else if (minimizedElements_GO[i].name == shopProgram_GO.name)
+            else if (minimizedElements_GO[i].name == vaperisProgram_GO.name &&
+                minimizedElements_GO[i].name == other.name)
             {
                 minimizedElements_GO[i].SetActive(false);
-                shopProgram_GO.gameObject.SetActive(true);
+                vaperisProgram_GO.gameObject.SetActive(true);
                 break;
             }
-            else if (minimizedElements_GO[i].name == codeProgram_GO.name)
+            else if (minimizedElements_GO[i].name == vPotatoProgram_GO.name &&
+                minimizedElements_GO[i].name == other.name)
             {
                 minimizedElements_GO[i].SetActive(false);
-                codeProgram_GO.gameObject.SetActive(true);
+                vPotatoProgram_GO.gameObject.SetActive(true);
                 break;
             }
-            else if (minimizedElements_GO[i].name == twitterProgram_GO.name)
+            else if (minimizedElements_GO[i].name == FranEatProgram_GO.name &&
+                minimizedElements_GO[i].name == other.name)
             {
                 minimizedElements_GO[i].SetActive(false);
-                twitterProgram_GO.gameObject.SetActive(true);
+                FranEatProgram_GO.gameObject.SetActive(true);
                 break;
             }
         }

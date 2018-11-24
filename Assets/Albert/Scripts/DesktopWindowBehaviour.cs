@@ -58,7 +58,7 @@ public class DesktopWindowBehaviour : MonoBehaviour
 
     public void MinimizeWindow()
     {
-        desktopBehaviour_Reference.AddToMinimizedApps(this.name);
+        desktopBehaviour_Reference.AddToMinimizedApps(gameObject.name);
     }
 
     public void CloseWindow()
