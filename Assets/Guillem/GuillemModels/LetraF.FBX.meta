@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 199d65cd359780c4e8d1bc210a7cee67
+guid: bbcf6feb51373d74a84efaa6e480d038
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -8,8 +8,13 @@ ModelImporter:
     2100000: 01Blanco
     2300000: //RootNode
     3300000: //RootNode
-    4300000: LetraA
-  externalObjects: {}
+    4300000: LetraF
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 01Blanco
+    second: {fileID: 2100000, guid: d2f55ce82fad2034290d5b33bf7d9363, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
