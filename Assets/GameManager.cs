@@ -12,10 +12,10 @@ public class GameManager : MonoBehaviour
     private AudioSource source;
 
     //Control variables
-    int day;
-    float money;
-    int juegos_comprados;
-    int juegos_pirateados;
+    public int day;
+    public float money;
+    public int juegos_comprados;
+    public int juegos_pirateados;
 
     // Start is called before the first frame update
     void Awake()
@@ -28,18 +28,16 @@ public class GameManager : MonoBehaviour
         else
             Destroy(gameObject);
 
-        listener = GetComponent<AudioListener>();
         GameObject.Find("AnimacionCambioDiaCanvas").GetComponentInChildren<Text>().text = "Dia " + instance.day;
         instance.day++;
-        UnityStandardAssets.Characters.FirstPerson.FirstPersonController.canInput = false;
+        UnityStandardAssets.Characters.FirstPerson.FirstPersonController.canInput = true;
         GameObject.Find("AnimacionCambioDiaCanvas").GetComponent<Animator>().SetTrigger("LaunchDayAnim");
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A))
-            SceneManager.LoadScene("Casa");
+
     }
 
     public void PlayAudio(int i)
