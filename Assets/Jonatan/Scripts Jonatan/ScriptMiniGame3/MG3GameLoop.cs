@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class MG3GameLoop : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class MG3GameLoop : MonoBehaviour
     public GameObject player;
     GameObject aux;
     public Text victory;
+    float timer = 3;
 
     private void Start()
     {
@@ -27,14 +29,14 @@ public class MG3GameLoop : MonoBehaviour
 
 
         if (end) {
+            timer -= Time.deltaTime;
+            if (timer <= 0) {
 
-            if (Input.GetKeyDown(KeyCode.R)) {
+                SceneManager.LoadScene("Oficina");
 
-                victory.text = "";
-                Destroy(aux);
-                aux = Instantiate(player);
-                end = false;
+
             }
+
         }
     }
 
