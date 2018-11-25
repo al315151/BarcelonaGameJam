@@ -8,7 +8,7 @@ public class MG2PlayerMovement : MonoBehaviour
     public GameObject bullet;
     public Transform bulletExit;
     float horizontalMovement = 0f;
-    float shootRate = 0.1f;
+    float shootRate = 0.15f;
 
     // Update is called once per frame
     void Update()
@@ -40,6 +40,17 @@ public class MG2PlayerMovement : MonoBehaviour
 
 
         Instantiate(bullet, bulletExit.position, this.gameObject.transform.rotation);
-        shootRate = 0.1f;
+        shootRate = 0.15f;
+    }
+
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Key") {
+
+            Destroy(this.gameObject);
+
+
+        }
     }
 }
