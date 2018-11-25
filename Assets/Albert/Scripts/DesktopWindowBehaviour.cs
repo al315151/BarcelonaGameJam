@@ -33,15 +33,13 @@ public class DesktopWindowBehaviour : MonoBehaviour
         setAuxiliarRectTransforms();
         window_position_offset = GetComponentInParent<RectTransform>().position;
         desktopBehaviour_Reference = GetComponentInParent<DesktopBehaviour>();
+        windowRect = GetComponent<RectTransform>();
     }
 
     // Update is called once per frame
     void Update()
     {
         ResizeRenderTexture();
-
-
-
     }
 
 

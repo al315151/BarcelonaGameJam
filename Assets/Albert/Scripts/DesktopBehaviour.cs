@@ -48,29 +48,27 @@ public class DesktopBehaviour : MonoBehaviour
     public GameObject bottomBar;
     DesktopState currentState;
 
+    [Header("Money Related Variables")]
+    public Text moneyReference_Text;
+    public GameObject moneyCanvas_GO;
+
     //ESTA VARIABLE VA DE 0 A 1.
     public float GameState;
 
     [Header("Desktop Management Variables")]
     public TwitProperties[] tweetPole_GO;
     
+
     // Start is called before the first frame update
     void Start()
     {
-        currentState = DesktopState.Home;
+        currentState = DesktopState.Work;
         SetDestopIconsAndPrograms();
         GameState = 0;
     }
 
     // Update is called once per frame
-    void Update()
-    {
-      if (Input.GetKeyDown(KeyCode.P))
-        {
-            this.gameObject.SetActive(false);
-        }
-    }
-
+ 
     public void SetDestopIconsAndPrograms()
     {
         if (currentState == DesktopState.Home)
@@ -78,22 +76,23 @@ public class DesktopBehaviour : MonoBehaviour
             backgroundImage.sprite = HomeBackground;
             SpawnHomeIcons();
             bottomBar.SetActive(true);
+            moneyCanvas_GO.SetActive(true);
         }
         else if (currentState == DesktopState.Work)
         {
             backgroundImage.sprite = WorkBackground;
             StartCodeProgram();
             bottomBar.SetActive(true);
+            RemoveAllMinimizedApps();
+            moneyCanvas_GO.SetActive(false);
         }
         else if (currentState == DesktopState.Twiter)
         {
             StartTwitterProgram();
             bottomBar.SetActive(false);
             RandomizeTweets();
-
+            moneyCanvas_GO.SetActive(false);
         }
-
-
     }
 
     void SpawnHomeIcons()
@@ -115,10 +114,9 @@ public class DesktopBehaviour : MonoBehaviour
     {
         for (int i = 0; i < DesktopIcons_GO.Length; i++)
         {    DesktopIcons_GO[i].SetActive(false);      }
-        codeProgram_GO.gameObject.SetActive(true);
-        codeProgram_GO.MaximizeWindow();
         RemoveAllMinimizedApps();
-        //codeProgram_GO.ForceMaximizedWindow();
+        codeProgram_GO.gameObject.SetActive(true);
+        codeProgram_GO.ForceMaximizedWindow();
     }
 
     void StartTwitterProgram()
@@ -283,6 +281,11 @@ public class DesktopBehaviour : MonoBehaviour
         windowRect.offsetMin = other.offsetMin;
     }
 
+    public void CloseDesktop()
+    {
+        print("Cerramos el telon");
+        this.gameObject.SetActive(false);
+    }
 
 
 }
