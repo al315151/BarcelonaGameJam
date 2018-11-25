@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RPSWork : MonoBehaviour
 {
@@ -9,6 +10,14 @@ public class RPSWork : MonoBehaviour
     int IAPoints = 0;
     RPS playerAction = RPS.Null;
     RPS IAAction = RPS.Null;
+    bool newBattle = false;
+    bool victory = false;
+    public GameObject[] playerObjects = new GameObject[3];
+    public GameObject[] IAObjects = new GameObject[3];
+    float timerBattle = 1;
+    public Text playerScore;
+    public Text IAScore;
+    public Text victoryText;
     // Start is called before the first frame update
 
     void Start() {
@@ -20,16 +29,40 @@ public class RPSWork : MonoBehaviour
 
     void Update() {
 
-        if (playerAction != RPS.Null && IAAction != RPS.Null) {
+        if (!victory) {
 
-            Turn();
+            if (playerAction != RPS.Null && IAAction != RPS.Null)
+            {
+
+                if (!newBattle)
+                {
+
+                    Turn();
+
+                }
+
+
+            }
+
+            timerBattle -= Time.deltaTime;
+            if (timerBattle <= 0 && newBattle)
+            {
+
+
+                newTurn();
+
+            }
 
         }
+
 
     }
 
 
     void Turn() {
+
+        playerObjects[(int)playerAction].gameObject.transform.Translate(Vector3.down * -0.75f);
+        IAObjects[(int)IAAction].gameObject.transform.Translate(Vector3.down * -0.75f);
 
         switch (playerAction) {
 
@@ -72,11 +105,38 @@ public class RPSWork : MonoBehaviour
                 }
                 break;
         }
+        playerScore.text = "" + playerPoints;
+        IAScore.text = "" + IAPoints;
+        newBattle = true;
+        timerBattle = 1;
+        if (playerPoints >= 3)
+        {
 
+            victoryText.text = "You Win";
+            victory = true;
+
+        }
+        else if (IAPoints >= 3)
+        {
+
+            victoryText.text = "You Lose";
+            victory = true;
+
+        }
+
+    }
+
+    void newTurn() {
+
+
+        playerObjects[(int)playerAction].gameObject.transform.Translate(Vector3.down * 0.75f);
+        IAObjects[(int)IAAction].gameObject.transform.Translate(Vector3.down * 0.75f);
         playerAction = RPS.Null;
         IAAction = RPS.Null;
+        newBattle = false;
+        //print("Player Points: " + playerPoints + " ; Enemy Points: " + IAPoints);
 
-        print("Player Points: " + playerPoints + " ; Enemy Points: " + IAPoints);
+
     }
 
 
@@ -109,6 +169,19 @@ public class RPSWork : MonoBehaviour
         return IAAction;
 
     }
+
+    public void Restart() {
+
+        victory = false;
+        playerPoints = 0;
+        IAPoints = 0;
+        timerBattle = 0;
+        playerScore.text = "" + playerPoints;
+        IAScore.text = "" + IAPoints;
+        victoryText.text = "";
+
+
+    }
 }
 
-public enum RPS { Rock, Paper, Scissor, Null }
+public enum RPS {  Paper, Rock, Scissor, Null }
