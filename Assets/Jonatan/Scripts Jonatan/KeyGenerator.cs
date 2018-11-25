@@ -19,7 +19,8 @@ public class KeyGenerator : MonoBehaviour
             {
                 Random random = new Random();
                 int i = Random.Range(0, KeysList.Length);
-                Instantiate(KeysList[i]);
+                GameObject aux = Instantiate(KeysList[i]);
+                aux.tag = "Key";
                 timer = 1f;
                 keysCounter += 1;
             }

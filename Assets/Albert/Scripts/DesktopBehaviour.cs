@@ -40,7 +40,7 @@ public class DesktopBehaviour : MonoBehaviour
     public Sprite HomeBackground;
 
     [Header("PC's Canvas References")]
-    public GameObject workPC_GO;
+    public RectTransform workPC_GO;
     public GameObject homePC_GO;
 
     [Header("Desktop Management Variables")]
@@ -65,7 +65,10 @@ public class DesktopBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-      
+      if (Input.GetKeyDown(KeyCode.P))
+        {
+            this.gameObject.SetActive(false);
+        }
     }
 
     public void SetDestopIconsAndPrograms()
@@ -75,13 +78,12 @@ public class DesktopBehaviour : MonoBehaviour
             backgroundImage.sprite = HomeBackground;
             SpawnHomeIcons();
             bottomBar.SetActive(true);
-            backgroundImage.sprite = HomeBackground;
         }
         else if (currentState == DesktopState.Work)
         {
             backgroundImage.sprite = WorkBackground;
             StartCodeProgram();
-            bottomBar.SetActive(false);
+            bottomBar.SetActive(true);
         }
         else if (currentState == DesktopState.Twiter)
         {
@@ -105,6 +107,8 @@ public class DesktopBehaviour : MonoBehaviour
         vaperisProgram_GO.gameObject.SetActive(false);
         vPotatoProgram_GO.gameObject.SetActive(false);
         FranEatProgram_GO.gameObject.SetActive(false);
+        RemoveAllMinimizedApps();
+
     }
 
     void StartCodeProgram()
@@ -112,7 +116,9 @@ public class DesktopBehaviour : MonoBehaviour
         for (int i = 0; i < DesktopIcons_GO.Length; i++)
         {    DesktopIcons_GO[i].SetActive(false);      }
         codeProgram_GO.gameObject.SetActive(true);
-        codeProgram_GO.ForceMaximizedWindow();
+        codeProgram_GO.MaximizeWindow();
+        RemoveAllMinimizedApps();
+        //codeProgram_GO.ForceMaximizedWindow();
     }
 
     void StartTwitterProgram()
@@ -242,7 +248,6 @@ public class DesktopBehaviour : MonoBehaviour
 
     }
 
-
     public string RandomNameGenerator()
     {
         //https://stackoverflow.com/questions/14687658/random-name-generator-in-c-sharp
@@ -263,7 +268,20 @@ public class DesktopBehaviour : MonoBehaviour
 
     }
 
+    public void SetWindowedProperties(RectTransform other, RectTransform windowRect)
+    {
+        windowRect.pivot = other.pivot;
+        windowRect.position = other.position;
+        windowRect.rotation = other.rotation;
+        windowRect.localPosition = other.localPosition;
 
+        windowRect.rect.Set(other.rect.x, other.rect.y,
+                            other.rect.width, other.rect.height);
+        windowRect.anchorMax = other.anchorMax;
+        windowRect.anchorMin = other.anchorMin;
+        windowRect.offsetMax = other.offsetMax;
+        windowRect.offsetMin = other.offsetMin;
+    }
 
 
 

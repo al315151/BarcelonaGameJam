@@ -7,7 +7,6 @@ public class DesktopWindowBehaviour : MonoBehaviour
 {
 
     public RectTransform windowRect;
-    public GameObject windowContent;
     RectTransform windowed_RectTransform;
     RectTransform fullScreen_RectTransform;
     bool Maximized;
@@ -18,6 +17,14 @@ public class DesktopWindowBehaviour : MonoBehaviour
     public RawImage Game_background;
     public Image Icon;
     DesktopBehaviour desktopBehaviour_Reference;
+
+    [Header("Render Texture Variables")]
+    public RenderTexture window_RenderTexture;
+    public GameObject top_right_window_Corner_GO;
+    public GameObject down_left_window_Corner_GO;
+    public RawImage renderTextureHolder_RawImage;
+    public Camera forRenderTexture_Camera;
+
 
     // Start is called before the first frame update
     void Start()
@@ -31,17 +38,12 @@ public class DesktopWindowBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-         if (Input.GetKeyDown(KeyCode.O))
-        {
-            this.gameObject.SetActive(false);
-        }
-    }
+        ResizeRenderTexture();
 
-    public void panWindow()
-    {
-        if (Maximized) { Maximized = false; }
+
 
     }
+
 
     public void MaximizeWindow()
     {
@@ -124,5 +126,21 @@ public class DesktopWindowBehaviour : MonoBehaviour
 
     }
 
+    public void ResizeRenderTexture()
+    {
+        if (window_RenderTexture == null || top_right_window_Corner_GO == null
+            || down_left_window_Corner_GO == null || renderTextureHolder_RawImage == null ||
+            forRenderTexture_Camera == null)
+        {   return;       }
 
+        float renderTexture_width = top_right_window_Corner_GO.transform.position.x - down_left_window_Corner_GO.transform.position.x;
+        float renderTexture_height = top_right_window_Corner_GO.transform.position.y - down_left_window_Corner_GO.transform.position.y;
+
+        forRenderTexture_Camera.targetTexture.Release();
+
+        forRenderTexture_Camera.targetTexture = new RenderTexture((int)renderTexture_width, (int)renderTexture_height, 16);
+
+        renderTextureHolder_RawImage.texture = forRenderTexture_Camera.targetTexture;
+
+    }
 }
