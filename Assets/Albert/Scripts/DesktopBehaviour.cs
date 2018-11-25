@@ -13,7 +13,6 @@ public class DesktopBehaviour : MonoBehaviour
     [Header("Containers Public References")]
     //References to put inside the right elements.
     public GameObject minimizedBar_GO;
-    public GameObject gameFolder_GO;
 
     [Header("Container Elements Public References")]
     public GameObject[] minimizedElements_GO;
@@ -48,8 +47,17 @@ public class DesktopBehaviour : MonoBehaviour
      bool MazeUnlocked;
      bool PongUnlocked;
 
+    public GameObject snakeShop_Reference_GO;
+    public GameObject RPSShop_Reference_GO;
+    public GameObject SpaceBattleShop_Reference_GO;
+    public GameObject MazeShop_Reference_GO;
+    public GameObject PongShop_Reference_GO;
 
-
+    public GameObject snakePirate_Reference_GO;
+    public GameObject RPSPirate_Reference_GO;
+    public GameObject SpaceBattlePirate_Reference_GO;
+    public GameObject MazePirate_Reference_GO;
+    public GameObject PongPirate_Reference_GO;
 
 
     [Header("Images Public References")]
@@ -82,7 +90,9 @@ public class DesktopBehaviour : MonoBehaviour
 
     [Header("Desktop Management Variables")]
     public TwitProperties[] tweetPole_GO;
-    
+
+    [Header("Money Related Variables")]
+    public Text FranEatButtonText;
 
 
     // Start is called before the first frame update
@@ -91,6 +101,7 @@ public class DesktopBehaviour : MonoBehaviour
         currentState = DesktopState.Home;
         SetDestopIconsAndPrograms();
         GameState = 0;
+        DesktopGamesSetter();
     }
 
     // Update is called once per frame
@@ -230,7 +241,6 @@ public class DesktopBehaviour : MonoBehaviour
         }
     }
 
-
     public void RandomizeTweets()
     {
         int bossPosition = Random.Range(0, tweetPole_GO.Length);
@@ -339,10 +349,86 @@ public class DesktopBehaviour : MonoBehaviour
         {
             spaceBattleUnlocked = true;
         }
+        DesktopGamesSetter();
+    }
+
+   public void DesktopGamesSetter()
+    {
+        if (snakeUnlocked)
+        {
+            snakePirate_Reference_GO.SetActive(false);
+            snakeShop_Reference_GO.SetActive(false);
+            snakeProgramIcon_GO.SetActive(true);
+        }
+        else
+        {
+            snakePirate_Reference_GO.SetActive(true);
+            snakeShop_Reference_GO.SetActive(true);
+            snakeProgramIcon_GO.SetActive(false);
+        }
+
+        if (MazeUnlocked)
+        {
+            MazePirate_Reference_GO.SetActive(false);
+            MazeShop_Reference_GO.SetActive(false);
+            MazeIcon_GO.SetActive(true);
+        }
+        else
+        {
+            MazePirate_Reference_GO.SetActive(true);
+            MazeShop_Reference_GO.SetActive(true);
+            MazeIcon_GO.SetActive(false);
+        }
+
+        if (RPSUnlocked)
+        {
+            RPSPirate_Reference_GO.SetActive(false);
+            RPSShop_Reference_GO.SetActive(false);
+            RPSProgramIcon_GO.SetActive(true);
+        }
+        else
+        {
+            RPSPirate_Reference_GO.SetActive(true);
+            RPSShop_Reference_GO.SetActive(true);
+            RPSProgramIcon_GO.SetActive(false);
+        }
+
+        if (spaceBattleUnlocked)
+        {
+            SpaceBattlePirate_Reference_GO.SetActive(false);
+            SpaceBattleShop_Reference_GO.SetActive(false);
+            SpaceBattleProgramIcon_GO.SetActive(true);
+        }
+        else
+        {
+            SpaceBattlePirate_Reference_GO.SetActive(true);
+            SpaceBattleShop_Reference_GO.SetActive(true);
+            SpaceBattleProgramIcon_GO.SetActive(false);
+        }
+
+        if (PongUnlocked)
+        {
+            PongPirate_Reference_GO.SetActive(false);
+            PongShop_Reference_GO.SetActive(false);
+            PongIcon_Program_GO.SetActive(true);
+        }
+        else
+        {
+            PongPirate_Reference_GO.SetActive(true);
+            PongShop_Reference_GO.SetActive(true);
+            PongIcon_Program_GO.SetActive(false);
+        }
 
     }
 
-   
+    public void SetFoodWindowText(float numberOfDays)
+    {
+        FranEatButtonText.text = " Comprar comida (" + numberOfDays + " euros)";
+    }
 
+    public void PurchaseFood()
+    {
+
+    }
 
 }
