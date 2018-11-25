@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class CardsControllerScript : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class CardsControllerScript : MonoBehaviour
 
     private GameObject[] cards;
     public List<GameObject> selectedCards;
+    float timer = 2f;
+    bool endGame = false;
 
     Vector3 point;
     Vector2 mousePos;
@@ -32,6 +35,7 @@ public class CardsControllerScript : MonoBehaviour
     public void StartCardGame()
     {
         mousePos = Vector2.zero;
+        timer = 2f;
         point = Vector3.zero;
         selectedCards.Clear();
         canClick = true;
@@ -51,30 +55,38 @@ public class CardsControllerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetMouseButtonDown(0) && canClick){
-            mousePos.x = Input.mousePosition.x;
-            mousePos.y = Input.mousePosition.y;
-            point = camera.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, camera.nearClipPlane)); 
-            if(detectCard()){
-                clicks ++;
-                if(clicks >= 2){
-                    canClick = false;
-                    clicks = 0;
+        if(!endGame){
+            if(Input.GetMouseButtonDown(0) && canClick){
+                mousePos.x = Input.mousePosition.x;
+                mousePos.y = Input.mousePosition.y;
+                point = camera.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, camera.nearClipPlane)); 
+                if(detectCard()){
+                    clicks ++;
+                    if(clicks >= 2){
+                        canClick = false;
+                        clicks = 0;
+                    }
+                }
+            }
+
+            if(!canClick && selectedCards.Count == 2){
+                if(selectedCards[0].GetComponent<CardColor>().color == selectedCards[1].GetComponent<CardColor>().color){
+                    points ++;
+                    if(points >= 10){
+                        endGame = true;
+                    }
+                    score_Text.text = "Puntuacion: " + points;
+                    StartCoroutine(waitForFlipWin());
+                    canClick = true;
+                }
+                else{
+                    StartCoroutine(waitForFlip());
+                    canClick = true;
                 }
             }
         }
-
-        if(!canClick && selectedCards.Count == 2){
-            if(selectedCards[0].GetComponent<CardColor>().color == selectedCards[1].GetComponent<CardColor>().color){
-                points ++;
-                score_Text.text = "Puntuacion: " + points;
-                StartCoroutine(waitForFlipWin());
-                canClick = true;
-            }
-            else{
-                StartCoroutine(waitForFlip());
-                canClick = true;
-            }
+        else{
+            exitGame();
         }
     }
 
@@ -82,14 +94,9 @@ public class CardsControllerScript : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(point, Vector3.forward, out hit, Mathf.Infinity))
         {
-            if(hit.collider.name == "Cerrar"){
-                exitGame();
-            }
-            else{
-                selectedCards.Add(hit.collider.gameObject);
-                flipCard(hit.collider.gameObject);
-                return true;
-            }
+            selectedCards.Add(hit.collider.gameObject);
+            flipCard(hit.collider.gameObject);
+            return true;
         }
         return false;
     }
@@ -126,7 +133,11 @@ public class CardsControllerScript : MonoBehaviour
     }
 
     public void exitGame(){
-        print("Alo mundanos");
-        transform.parent.gameObject.SetActive(false);
+        if (timer <= 0){
+            SceneManager.LoadScene("Oficina");
+        }
+        else{
+            timer -= Time.deltaTime;
+        }
     }
 }

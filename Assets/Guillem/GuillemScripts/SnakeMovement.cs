@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SnakeMovement : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class SnakeMovement : MonoBehaviour
 
     private Quaternion actualRotation, lastRotation, rotationBody;
     private float moveCD = 0f;
+    float timer = 2f;
 
     public List<GameObject> snake;
 
@@ -89,13 +91,24 @@ public class SnakeMovement : MonoBehaviour
         }
         else{
             //FIN DEL JUEGO
-            if(snake != null){
+            exitGame();
+            /*if(snake != null){
                 foreach (GameObject item in snake)
                 {
                     Destroy(item);  
                 }
-            }
-            transform.parent.gameObject.SetActive(false);
+            }*/
+            //transform.parent.gameObject.SetActive(false);
+
+        }
+    }
+
+    void exitGame(){
+        if (timer <= 0){
+            SceneManager.LoadScene("Oficina");
+        }
+        else{
+            timer -= Time.deltaTime;
         }
     }
 
@@ -127,12 +140,13 @@ public class SnakeMovement : MonoBehaviour
         }
 
         if(other.tag == "Tail"){
-            foreach (GameObject item in snake)
-            {
-                Destroy(item);
+            //foreach (GameObject item in snake)
+            //{
+            //    Destroy(item);
                 
-            }
-            transform.parent.gameObject.SetActive(false);
+          //  }
+           // transform.parent.gameObject.SetActive(false);
+           exitGame();
         }
     }
 }
