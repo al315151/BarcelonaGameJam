@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public enum DesktopState
 {
@@ -78,7 +79,7 @@ public class DesktopBehaviour : MonoBehaviour
     [Header("Desktop Management Variables")]
     public Image backgroundImage;
     public GameObject bottomBar;
-    DesktopState currentState;
+    public DesktopState currentState;
 
     [Header("Money Related Variables")]
     public Text moneyReference_Text;
@@ -98,14 +99,21 @@ public class DesktopBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        currentState = DesktopState.Home;
+        UnityStandardAssets.Characters.FirstPerson.FirstPersonController.canInput = true;
         SetDestopIconsAndPrograms();
         GameState = 0;
         DesktopGamesSetter();
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
 
     // Update is called once per frame
- 
+    private void Update()
+    {
+        
+    }
+
+
     public void SetDestopIconsAndPrograms()
     {
         if (currentState == DesktopState.Home)
@@ -320,7 +328,7 @@ public class DesktopBehaviour : MonoBehaviour
     public void CloseDesktop()
     {
         print("Cerramos el telon");
-        this.gameObject.SetActive(false);
+        SceneManager.LoadScene(2);
     }
 
     public void UnlockGame(GameObject other)

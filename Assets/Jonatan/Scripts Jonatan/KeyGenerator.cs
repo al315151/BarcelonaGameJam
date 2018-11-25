@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class KeyGenerator : MonoBehaviour
 {
     public GameObject[] KeysList = new GameObject[4]; 
@@ -31,9 +31,30 @@ public class KeyGenerator : MonoBehaviour
 
             }
 
+            if (keysCounter == 20)
+            {
+                timer = 5f;
+            }
 
-
+        }
+        else
+        {
+            
+            timer -= Time.deltaTime;
+            if (timer <= 0)
+            {
+                GoToWay();
+            }
         }
        
     }
+
+    void GoToWay()
+    {
+        GameManager.instance.money = GameManager.instance.money + 60 + PlayData.instance.points;
+        SceneManager.LoadScene(4);
+    }
+
+
+
 }

@@ -356,6 +356,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2926623642104729014, guid: dbb0a0565aa8a784e8c986021aed3d57,
+        type: 3}
+      propertyPath: desktopCanvas
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dbb0a0565aa8a784e8c986021aed3d57, type: 3}
 --- !u!1 &81537757
