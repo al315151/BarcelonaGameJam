@@ -66,6 +66,16 @@ public class DesktopWindowBehaviour : MonoBehaviour
         this.gameObject.SetActive(false);
     }
 
+    public void ForceMaximizedWindow()
+    {
+        Maximized = true;
+        if (fullScreen_RectTransform == null || windowed_RectTransform == null)
+        { setAuxiliarRectTransforms(); }
+        SetWindowedProperties(fullScreen_RectTransform);
+        windowRect.anchorMax = new Vector2(1f, 1f);
+        windowRect.anchorMin = new Vector2(0, 0f);
+    }
+
 
     public void SetWindowedProperties(RectTransform other)
     {
@@ -111,6 +121,7 @@ public class DesktopWindowBehaviour : MonoBehaviour
                                        windowRect.rect.width, windowRect.rect.height);
         fullScreen_RectTransform.anchorMax = new Vector2(1f, 1f);
         fullScreen_RectTransform.anchorMin = new Vector2(0, 0.1f);
+
     }
 
 

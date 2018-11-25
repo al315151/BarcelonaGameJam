@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public enum DesktopState
 {
-    Work, Home
+    Work, Home, Twiter
 }
 
 public class DesktopBehaviour : MonoBehaviour
@@ -18,6 +18,7 @@ public class DesktopBehaviour : MonoBehaviour
 
     [Header("Container Elements Public References")]
     public GameObject[] minimizedElements_GO;
+    public GameObject[] DesktopIcons_GO;
 
     [Header("Programs Public References")]
     //Reference to the programs.
@@ -44,13 +45,14 @@ public class DesktopBehaviour : MonoBehaviour
 
     [Header("Desktop Management Variables")]
     public Image backgroundImage;
+    public GameObject bottomBar;
     DesktopState currentState;
    
     // Start is called before the first frame update
     void Start()
     {
-        currentState = DesktopState.Home;
-
+        currentState = DesktopState.Twiter;
+        SetDestopIconsAndPrograms();
     }
 
     // Update is called once per frame
@@ -59,17 +61,25 @@ public class DesktopBehaviour : MonoBehaviour
       
     }
 
-    public void SetWorldSpaceCanvas(RectTransform canvasPosition)
+    public void SetDestopIconsAndPrograms()
     {
         if (currentState == DesktopState.Home)
         {
             backgroundImage.sprite = HomeBackground;
             SpawnHomeIcons();
+            bottomBar.SetActive(true);
+            backgroundImage.sprite = HomeBackground;
         }
-        else
+        else if (currentState == DesktopState.Work)
         {
             backgroundImage.sprite = WorkBackground;
-            SpawnWorkIcons();
+            StartCodeProgram();
+            bottomBar.SetActive(false);
+        }
+        else if (currentState == DesktopState.Twiter)
+        {
+            StartTwitterProgram();
+            bottomBar.SetActive(false);
         }
 
 
@@ -77,12 +87,37 @@ public class DesktopBehaviour : MonoBehaviour
 
     void SpawnHomeIcons()
     {
+        for (int i = 0; i < DesktopIcons_GO.Length; i++)
+        {
+            DesktopIcons_GO[i].SetActive(true);
+        }
 
+        gameFolderProgram_GO.gameObject.SetActive(false);
+        vaperisProgram_GO.gameObject.SetActive(false);
+        vPotatoProgram_GO.gameObject.SetActive(false);
+        FranEatProgram_GO.gameObject.SetActive(false);
     }
 
-    void SpawnWorkIcons()
+    void StartCodeProgram()
     {
+        for (int i = 0; i < DesktopIcons_GO.Length; i++)
+        {    DesktopIcons_GO[i].SetActive(false);      }
+        codeProgram_GO.gameObject.SetActive(true);
+        codeProgram_GO.ForceMaximizedWindow();
+    }
 
+    void StartTwitterProgram()
+    {
+        for (int i = 0; i < DesktopIcons_GO.Length; i++)
+        { DesktopIcons_GO[i].SetActive(false); }
+        twitterProgram_GO.gameObject.SetActive(true);
+        twitterProgram_GO.ForceMaximizedWindow();
+    }
+
+    public void RemoveAllMinimizedApps()
+    {
+        for (int i = 0; i < minimizedElements_GO.Length; i++)
+        { minimizedElements_GO[i].SetActive(false); }
     }
 
     public void AddToMinimizedApps(string window_name)
