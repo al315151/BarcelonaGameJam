@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class RPSWork : MonoBehaviour
 {
@@ -18,10 +19,12 @@ public class RPSWork : MonoBehaviour
     public Text playerScore;
     public Text IAScore;
     public Text victoryText;
+    float timer = 3f;
+    public GameObject imagen;
     // Start is called before the first frame update
 
     void Start() {
-
+        imagen.SetActive(false);
         instance = this;
 
     }
@@ -29,7 +32,8 @@ public class RPSWork : MonoBehaviour
 
     void Update() {
 
-        if (!victory) {
+        if (!victory)
+        {
 
             if (playerAction != RPS.Null && IAAction != RPS.Null)
             {
@@ -52,6 +56,20 @@ public class RPSWork : MonoBehaviour
                 newTurn();
 
             }
+
+        }
+        else {
+            imagen.SetActive(true);
+            timer -= Time.deltaTime;
+            if (timer <= 0) {
+
+                SceneManager.LoadScene("Oficina");
+                
+
+
+            }
+
+
 
         }
 
@@ -123,6 +141,7 @@ public class RPSWork : MonoBehaviour
             victory = true;
 
         }
+
 
     }
 
