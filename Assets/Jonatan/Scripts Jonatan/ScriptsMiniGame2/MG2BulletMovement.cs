@@ -23,7 +23,7 @@ public class MG2BulletMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Key") {
+        if (collision.gameObject.tag == "Line") {
 
             Destroy(collision.gameObject);
             Destroy(this.gameObject);

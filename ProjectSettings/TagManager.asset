@@ -8,6 +8,8 @@ TagManager:
   - Tail
   - PalaPong
   - Interactable
+  - Key
+  - Line
   layers:
   - Default
   - TransparentFX
