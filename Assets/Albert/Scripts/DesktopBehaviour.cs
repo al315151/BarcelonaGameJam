@@ -110,7 +110,7 @@ public class DesktopBehaviour : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        
+        SetMoneyText();
     }
 
 
@@ -328,7 +328,7 @@ public class DesktopBehaviour : MonoBehaviour
     public void CloseDesktop()
     {
         print("Cerramos el telon");
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene("Oficina");
     }
 
     public void UnlockGame(GameObject other)
@@ -336,26 +336,33 @@ public class DesktopBehaviour : MonoBehaviour
         if (other.name.Contains("Free"))
         {
             PiracyActivated = true;
+            GameManager.instance.juegos_pirateados++;
         }        
-        if (other.name.Contains("Snake"))
+        else { GameManager.instance.juegos_comprados++; }
+        if (other.name.Contains("Snake") && GameManager.instance.money > 60f)
         {
             snakeUnlocked = true;
+            GameManager.instance.money -= 60f;
         }
-        if (other.name.Contains("RPS"))
+        if (other.name.Contains("RPS") && GameManager.instance.money > 60f)
         {
             RPSUnlocked = true;
+            GameManager.instance.money -= 60f;
         }
-        if (other.name.Contains("Maze"))
+        if (other.name.Contains("Maze") && GameManager.instance.money > 60f)
         {
             MazeUnlocked = true;
+            GameManager.instance.money -= 60f;
         }
-        if (other.name.Contains("Pong"))
+        if (other.name.Contains("Pong") && GameManager.instance.money > 60f)
         {
             PongUnlocked = true;
+            GameManager.instance.money -= 60f;
         }
-        if (other.name.Contains("SpaceBattle"))
+        if (other.name.Contains("SpaceBattle") && GameManager.instance.money > 60f)
         {
             spaceBattleUnlocked = true;
+            GameManager.instance.money -= 60f;
         }
         DesktopGamesSetter();
     }
@@ -431,12 +438,12 @@ public class DesktopBehaviour : MonoBehaviour
 
     public void SetFoodWindowText(float numberOfDays)
     {
-        FranEatButtonText.text = " Comprar comida (" + numberOfDays + " euros)";
+        FranEatButtonText.text = " Comprar comida (" + 30 + " euros)";
     }
 
     public void PurchaseFood()
     {
-
+        GameManager.instance.money -= 30f;
     }
 
     public void PlayGame(GameObject other)
@@ -485,6 +492,10 @@ public class DesktopBehaviour : MonoBehaviour
         SetDestopIconsAndPrograms();
     }
 
+    public void SetMoneyText()
+    {
+        moneyReference_Text.text = "" + GameManager.instance.money;
+    }
 
 
 }
