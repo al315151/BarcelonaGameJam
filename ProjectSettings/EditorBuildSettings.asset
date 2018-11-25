@@ -23,4 +23,22 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Carlos/Scenes/DeCamino.unity
     guid: 9182c33c3d5dbec45a02218f0e2c3946
+  - enabled: 1
+    path: Assets/Jonatan/Scenes Jonatan/MiniGame1.unity
+    guid: 08b6be95afb08414c93d8d801f338589
+  - enabled: 1
+    path: Assets/Guillem/GuillemScenes/SnakeMiniGame.unity
+    guid: 2649067e534619c418e189ca46a3aaaa
+  - enabled: 1
+    path: Assets/Guillem/GuillemScenes/MakePairsMiniGame.unity
+    guid: 400a965aaaeb76f49b918f7e9a41f347
+  - enabled: 1
+    path: Assets/Jonatan/Scenes Jonatan/MiniGame2.unity
+    guid: cbf8574942e12b24ba4194b381487e73
+  - enabled: 1
+    path: Assets/Jonatan/Scenes Jonatan/MiniGame3.unity
+    guid: 258535c3a6720ec44b3e2eed6868c8f1
+  - enabled: 1
+    path: Assets/Carlos/Scenes/Pong.unity
+    guid: 27e30c475e8251d4881d7d8206068b73
   m_configObjects: {}

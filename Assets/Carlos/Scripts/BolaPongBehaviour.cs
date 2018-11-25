@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class BolaPongBehaviour : MonoBehaviour
 {
@@ -50,6 +51,7 @@ public class BolaPongBehaviour : MonoBehaviour
             if(p1Score == maxScore)
             {
                 //gana p1
+                SceneManager.LoadScene("Oficina");
             }
         }
         else if(transform.position.x - sprite.sprite.bounds.size.x / 2 * transform.localScale.x < minPoint.position.x)
@@ -61,6 +63,7 @@ public class BolaPongBehaviour : MonoBehaviour
             if (p2Score == maxScore)
             {
                 //gana p2
+                SceneManager.LoadScene("Oficina");
             }
 
         }
@@ -80,5 +83,7 @@ public class BolaPongBehaviour : MonoBehaviour
         p1.ResetPos();
         p2.ResetPos();
         dir = new Vector2(Random.value * 2 - 1, Random.value - 0.5f);
+        
+
     }
 }

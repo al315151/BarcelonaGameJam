@@ -446,30 +446,35 @@ public class DesktopBehaviour : MonoBehaviour
             snakeProgram_Reference_GO.SetActive(true);
             RemoveAllMinimizedApps();
             snakeProgram_Reference_GO.GetComponent<DesktopWindowBehaviour>().ForceMaximizedWindow();
+            SceneManager.LoadScene("SnakeMiniGame");
         }
         if (other.name.Contains("RPS"))
         {
             RPSProgram_Reference_GO.SetActive(true);
             RemoveAllMinimizedApps();
             RPSProgram_Reference_GO.GetComponent<DesktopWindowBehaviour>().ForceMaximizedWindow();
+            SceneManager.LoadScene("Minigame1");
         }
         if (other.name.Contains("Maze"))
         {
             MazeProgram_Reference_GO.SetActive(true);
             RemoveAllMinimizedApps();
             MazeProgram_Reference_GO.GetComponent<DesktopWindowBehaviour>().ForceMaximizedWindow();
+            SceneManager.LoadScene("Minigame3");
         }
         if (other.name.Contains("Pong"))
         {
             PongProgram_Reference_GO.SetActive(true);
             RemoveAllMinimizedApps();
             PongProgram_Reference_GO.GetComponent<DesktopWindowBehaviour>().ForceMaximizedWindow();
+            SceneManager.LoadScene("Pong");
         }
         if (other.name.Contains("SpaceBattle"))
         {
             SpaceBattleProgram_Reference_GO.SetActive(true);
             RemoveAllMinimizedApps();
             SpaceBattleProgram_Reference_GO.GetComponent<DesktopWindowBehaviour>().ForceMaximizedWindow();
+            SceneManager.LoadScene("Minigame2");
         }
     }
 
