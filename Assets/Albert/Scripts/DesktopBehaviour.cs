@@ -431,4 +431,47 @@ public class DesktopBehaviour : MonoBehaviour
 
     }
 
+    public void PlayGame(GameObject other)
+    {
+        if (other.name.Contains("Snake"))
+        {
+            snakeProgram_Reference_GO.SetActive(true);
+            RemoveAllMinimizedApps();
+            snakeProgram_Reference_GO.GetComponent<DesktopWindowBehaviour>().ForceMaximizedWindow();
+        }
+        if (other.name.Contains("RPS"))
+        {
+            RPSProgram_Reference_GO.SetActive(true);
+            RemoveAllMinimizedApps();
+            RPSProgram_Reference_GO.GetComponent<DesktopWindowBehaviour>().ForceMaximizedWindow();
+        }
+        if (other.name.Contains("Maze"))
+        {
+            MazeProgram_Reference_GO.SetActive(true);
+            RemoveAllMinimizedApps();
+            MazeProgram_Reference_GO.GetComponent<DesktopWindowBehaviour>().ForceMaximizedWindow();
+        }
+        if (other.name.Contains("Pong"))
+        {
+            PongProgram_Reference_GO.SetActive(true);
+            RemoveAllMinimizedApps();
+            PongProgram_Reference_GO.GetComponent<DesktopWindowBehaviour>().ForceMaximizedWindow();
+        }
+        if (other.name.Contains("SpaceBattle"))
+        {
+            SpaceBattleProgram_Reference_GO.SetActive(true);
+            RemoveAllMinimizedApps();
+            SpaceBattleProgram_Reference_GO.GetComponent<DesktopWindowBehaviour>().ForceMaximizedWindow();
+        }
+    }
+
+
+    public void SetDesktopState(DesktopState newState)
+    {
+        currentState = newState;
+        SetDestopIconsAndPrograms();
+    }
+
+
+
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CardsControllerScript : MonoBehaviour
 {
@@ -16,6 +17,9 @@ public class CardsControllerScript : MonoBehaviour
     Vector3 point;
     Vector2 mousePos;
     // Start is called before the first frame update
+
+    public Text score_Text;
+
 
     void OnEnable() {
         StartCardGame();
@@ -37,6 +41,7 @@ public class CardsControllerScript : MonoBehaviour
         randomCards();
         clicks = 0;
         points = 0;
+        score_Text.text = "Puntuacion: " + points;
     }
 
     public void Restart(){
@@ -62,6 +67,7 @@ public class CardsControllerScript : MonoBehaviour
         if(!canClick && selectedCards.Count == 2){
             if(selectedCards[0].GetComponent<CardColor>().color == selectedCards[1].GetComponent<CardColor>().color){
                 points ++;
+                score_Text.text = "Puntuacion: " + points;
                 StartCoroutine(waitForFlipWin());
                 canClick = true;
             }
