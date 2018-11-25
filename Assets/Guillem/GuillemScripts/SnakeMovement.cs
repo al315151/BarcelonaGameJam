@@ -89,9 +89,13 @@ public class SnakeMovement : MonoBehaviour
         }
         else{
             //FIN DEL JUEGO
-            Destroy(this.gameObject);
-            canPlay = false;
-            print("Fin del Juego");
+            if(snake != null){
+                foreach (GameObject item in snake)
+                {
+                    Destroy(item);  
+                }
+            }
+            transform.parent.gameObject.SetActive(false);
         }
     }
 
@@ -123,9 +127,12 @@ public class SnakeMovement : MonoBehaviour
         }
 
         if(other.tag == "Tail"){
-            Destroy(this.gameObject);
-            canPlay = false;
-            print("FIN DEL JUEGO POR CHOQUE");
+            foreach (GameObject item in snake)
+            {
+                Destroy(item);
+                
+            }
+            transform.parent.gameObject.SetActive(false);
         }
     }
 }

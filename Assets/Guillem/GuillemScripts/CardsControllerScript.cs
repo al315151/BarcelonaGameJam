@@ -82,9 +82,14 @@ public class CardsControllerScript : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(point, Vector3.forward, out hit, Mathf.Infinity))
         {
-            selectedCards.Add(hit.collider.gameObject);
-            flipCard(hit.collider.gameObject);
-            return true;
+            if(hit.collider.name == "Cerrar"){
+                exitGame();
+            }
+            else{
+                selectedCards.Add(hit.collider.gameObject);
+                flipCard(hit.collider.gameObject);
+                return true;
+            }
         }
         return false;
     }
@@ -94,14 +99,14 @@ public class CardsControllerScript : MonoBehaviour
     }
 
     IEnumerator waitForFlipWin(){
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.2f);
         flipCard(selectedCards[0]);
         flipCard(selectedCards[1]);
         selectedCards.Clear();
         randomCards();
     }
      IEnumerator waitForFlip(){
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.2f);
         flipCard(selectedCards[0]);
         flipCard(selectedCards[1]);
         selectedCards.Clear();
@@ -118,5 +123,10 @@ public class CardsControllerScript : MonoBehaviour
                 cards[random].transform.position = auxPos;
             }
         }
+    }
+
+    public void exitGame(){
+        print("Alo mundanos");
+        transform.parent.gameObject.SetActive(false);
     }
 }
