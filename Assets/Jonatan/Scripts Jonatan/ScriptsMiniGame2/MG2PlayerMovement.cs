@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class MG2PlayerMovement : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class MG2PlayerMovement : MonoBehaviour
     bool death = false;
     public GameObject originalLine;
     public Text defeatText;
+    float timer = 3;
 
     // Update is called once per frame
     void Update()
@@ -34,7 +36,19 @@ public class MG2PlayerMovement : MonoBehaviour
                 }
 
             }
-        } 
+        }
+        else {
+
+            timer -= Time.deltaTime;
+            if (timer<= 0) {
+
+
+                SceneManager.LoadScene("Oficina");
+
+
+            }
+
+        }
     }
 
     private void FixedUpdate()
