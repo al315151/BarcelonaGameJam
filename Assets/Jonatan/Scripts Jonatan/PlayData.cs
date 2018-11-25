@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayData : MonoBehaviour
 {
     public static PlayData instance;
-    int points = 0;
+    public int points = 0;
     int streak = 0;
     float streakMultiplier = 0.75f;
     // Start is called before the first frame update

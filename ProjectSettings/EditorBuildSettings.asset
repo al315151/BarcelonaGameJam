@@ -5,7 +5,22 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    path: Assets/Alvaro/Scenes/Casa.unity
+    guid: 74ed7de2c64b1ae458db1e141b9433ff
+  - enabled: 1
+    path: Assets/Albert/Scenes/UI_Test_Scene.unity
+    guid: 66d39bcc9d115d542a82d092d63325c7
+  - enabled: 1
+    path: Assets/Alvaro/Scenes/Oficina.unity
+    guid: c30f75d27dd868246ad4a38740cd292f
+  - enabled: 1
+    path: Assets/Jonatan/Scenes Jonatan/Scripting Game.unity
+    guid: c7327af829446934d9a96561b89d7635
+  - enabled: 1
+    path: Assets/Carlos/Scenes/DeCamino.unity
+    guid: 9182c33c3d5dbec45a02218f0e2c3946
   m_configObjects: {}
