@@ -1,16 +1,15 @@
 fileFormatVersion: 2
-guid: 8bee923150854034c9e760f44db14a3d
+guid: cd0cb1e41a00c004d9154291ef858521
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2100000: 04Pantalla
-    2100002: 03Gris
-    2100004: 8Gris medio
+    2100000: 03Gris
+    2100002: 8Gris medio
     2300000: //RootNode
     3300000: //RootNode
-    4300000: MonitorCasa
+    4300000: MonitorExterior
   externalObjects: {}
   materials:
     importMaterials: 1
