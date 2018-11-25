@@ -1,32 +1,52 @@
 [
     {
-        "controlValue": 0,
+        "controlValue": 0, 
 		"phrases": 
 		[
-			"Hola que tal?",
-			"Bien y tu?",
-			"Ferpecto",
-			"Hola Fernando",
-			"Una nueva frase"
+			"La comunidad de videojugadores está más implicada con los desarrolladores que nunca",
+			"Más y más juegos al mercado :D, así da gusto ahorrar",
+			"La industria de los videojuegos puede considerarse una de las mas grandes a este paso",
+			"Me acabo de comer un cacahuete y no me acordaba de que soy alergico.. ya os diré",
+			"Yo, plastico de burbujas, una botella de ron, se podría decir que hoy tengo fiesta",
+			"Pq el amor stan komplicado?",
+			"Se que soy un grano de arena, pero me alegra contribuir en cada juego que compro :)",
+			"Estot tan nebrio qe on se si he entcontrado usnas llaves o rperdido un cocche",
+			"Necesito uno de esos retretes japoneses urgentemente"
 		]
     },
     {
 		"controlValue": 5,
 		"phrases": 
 		[
-			"Uno",
-			"Dos",
-			"Tres",
-			"Olga es muy guapa"
+			"Al mundillo de los videojuegos no le queda mucho a este paso :(",
+			"No entiendo, os gustan los videojuegos pero sin embargo no los apoyais",
+			"Era inevitable que algún que otro juego se pirateara, mientras no vaya a más...",
+			"¿Os dais cuenta de que si las empresas que cierran dejan de hacer juegos? #StopPirates",
+			"Olga es muy guapa",
+			"Los gatos son como tigres chiquititos",
+			"¿Cuando un cangrejo ve un pez.. piensa que vuela? :/",
+			"#NO #PUEDO #DEJAR #DE #HASHTAGGEAR #TODO",
+			"Se han quedado sin champagne en primera clase :(",
+			"Cualquier pequeña contribución es valiosa y cualquier robo de ideas es denigrante #StopPirates",
+			"¿Tanto os cuesta invertir en aquello que o gusta?, hay empresas que se están empezando a ver afectadas",
+			"Que robaran mis ideas es como si me robaran lo más valioso"
 		]
-    },
+	},
     {
-        "controlValue": 10,
+        "controlValue": 15,
 		"phrases": 
 		[
-			"Game",
-			"Jam",
-			"Barcelona"
+			"Es increible que sean los propios jugadores los que hayan destruido los videojuegos...",
+			"No robarías un coche, pero no te importa robar las ideas de los demás, guay.",
+			"Nunca pensé que una de las modas pudiera llegar a ser robar ideas ajenas",
+			"Grano de arena tras grano de arena se ha formado una montaña.. #StopPirates",
+			"Simplemente indignado #StopPirates",
+			"#StopPirates",
+			"Pff.. espero que no sea demasiado tarde para lo videojuegos",
+			"Algunas empresas se han visto realmente afectadas por el tema de la piratería #StopPirates1",
+			"Estoy en la carcel y se han olvidado de confiscarme el movil xD",
+			"Me he dado cuenta de que soy alguien",
+			"¿Se puede nadar por debajo de Reino Unido?"
 		]
     }
 ]   
