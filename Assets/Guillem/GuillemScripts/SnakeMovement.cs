@@ -16,6 +16,20 @@ public class SnakeMovement : MonoBehaviour
 
     bool canPlay = true;
 
+    void OnDisable() {
+        canPlay = false;
+        snake.Clear();
+    }
+
+    public void OnRestart(){
+        OnEnable();
+    }
+
+    void OnEnable() {
+        canPlay = true;
+        moveCD = 0f;
+    }
+
     void Update()
     { 
         if(canPlay){      
@@ -74,6 +88,7 @@ public class SnakeMovement : MonoBehaviour
             }
         }
         else{
+            //FIN DEL JUEGO
             Destroy(this.gameObject);
             canPlay = false;
             print("Fin del Juego");
