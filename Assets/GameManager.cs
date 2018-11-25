@@ -8,6 +8,9 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
+    public AudioClip[] clipsAudio;
+    private AudioSource source;
+
     //Control variables
     int day;
     float money;
@@ -25,6 +28,7 @@ public class GameManager : MonoBehaviour
         else
             Destroy(gameObject);
 
+        listener = GetComponent<AudioListener>();
         GameObject.Find("AnimacionCambioDiaCanvas").GetComponentInChildren<Text>().text = "Dia " + instance.day;
         instance.day++;
         UnityStandardAssets.Characters.FirstPerson.FirstPersonController.canInput = false;
@@ -38,5 +42,12 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene("Casa");
     }
 
+    public void PlayAudio(int i)
+    {
+        source.clip = clipsAudio[i];
+        source.loop = false;
+        source.Play();
+    }
+    
     
 }
