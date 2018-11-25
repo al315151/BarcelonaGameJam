@@ -13,7 +13,6 @@ public class DesktopBehaviour : MonoBehaviour
     [Header("Containers Public References")]
     //References to put inside the right elements.
     public GameObject minimizedBar_GO;
-    public GameObject twitterFeed_GO;
     public GameObject gameFolder_GO;
 
     [Header("Container Elements Public References")]
@@ -36,6 +35,7 @@ public class DesktopBehaviour : MonoBehaviour
     public Sprite ShopSprite;
     public Sprite twitterIconSprite;
     public Sprite[] twitterUserIconsSprites;
+    public Sprite twitterBossIconSprite;
     public Sprite WorkBackground;
     public Sprite HomeBackground;
 
@@ -47,12 +47,19 @@ public class DesktopBehaviour : MonoBehaviour
     public Image backgroundImage;
     public GameObject bottomBar;
     DesktopState currentState;
-   
+
+    //ESTA VARIABLE VA DE 0 A 1.
+    public float GameState;
+
+    [Header("Desktop Management Variables")]
+    public TwitProperties[] tweetPole_GO;
+    
     // Start is called before the first frame update
     void Start()
     {
-        currentState = DesktopState.Twiter;
+        currentState = DesktopState.Home;
         SetDestopIconsAndPrograms();
+        GameState = 0;
     }
 
     // Update is called once per frame
@@ -80,6 +87,8 @@ public class DesktopBehaviour : MonoBehaviour
         {
             StartTwitterProgram();
             bottomBar.SetActive(false);
+            RandomizeTweets();
+
         }
 
 
@@ -190,6 +199,71 @@ public class DesktopBehaviour : MonoBehaviour
             }
         }
     }
+
+
+    public void RandomizeTweets()
+    {
+        int bossPosition = Random.Range(0, tweetPole_GO.Length);
+        List<string> possibleBossPhrases = Database.bossPhrases[GameState];
+        List<string> possiblePersonPhrases = Database.peoplePhrases[GameState];
+
+        //Para que no se haga 
+        int randomIconPosition = Random.Range(0, twitterUserIconsSprites.Length);
+        int randomTextPosition = Random.Range(0, possiblePersonPhrases.Count);
+
+
+        for (int i = 0; i < tweetPole_GO.Length; i++)
+        {
+            if (i == bossPosition)
+            {
+                tweetPole_GO[i].SetAuthorIconImage(twitterBossIconSprite);
+                int randomPosition = Random.Range(0, possibleBossPhrases.Count);
+                tweetPole_GO[i].SetAuthorNameText("Guillermo Wilson - CEO");
+                tweetPole_GO[i].SetTwitText(possibleBossPhrases[randomPosition]);
+            }
+            else
+            {
+                tweetPole_GO[i].SetAuthorIconImage(twitterUserIconsSprites[randomIconPosition]);
+                randomIconPosition = randomIconPosition + 1;
+                if (randomIconPosition == twitterUserIconsSprites.Length) { randomIconPosition = 0; }
+
+                tweetPole_GO[i].SetTwitText(possiblePersonPhrases[randomTextPosition]);
+                randomTextPosition = randomTextPosition + 1;
+                if (randomTextPosition == possiblePersonPhrases.Count) { randomTextPosition = 0; }
+
+                tweetPole_GO[i].SetAuthorNameText(RandomNameGenerator());
+            }
+
+
+        }
+
+
+
+
+    }
+
+
+    public string RandomNameGenerator()
+    {
+        //https://stackoverflow.com/questions/14687658/random-name-generator-in-c-sharp
+
+        string[] names_1 = {"Al" , "Jon", "Guil", "Alv", "Car", "Ad", "Ol", "Sab", "Br" };
+        string[] names_2 = { "bert", "athan", "lem", "aro", "oline", "los", "rian", "ga", "rina", "" };
+
+        string[] surnames_1 = { "furro", "taku", "Lop", "Gar", "Agui", "Cas", "asdf"  };
+        string[] surnames_2 = { "o", "lord", "ez", "cia", "lar", "tell", "1982", "" };
+
+
+        int index_1 = Random.Range(0, names_1.Length);
+        int index_2 = Random.Range(0, names_2.Length);
+        int index_3 = Random.Range(0, surnames_1.Length);
+        int index_4 = Random.Range(0, surnames_2.Length);
+               
+        return names_1[index_1] + names_2[index_2] + " " + surnames_1[index_3] + surnames_2[index_4];
+
+    }
+
+
 
 
 
