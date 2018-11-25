@@ -20,7 +20,7 @@ public class TwitterSceneManagement : MonoBehaviour
         
         if (timer_change_scene < 0.0f)
         {
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene("Casa");
         }
 
     }

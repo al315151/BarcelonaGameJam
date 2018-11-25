@@ -52,7 +52,7 @@ public class KeyGenerator : MonoBehaviour
     void GoToWay()
     {
         GameManager.instance.money = GameManager.instance.money + 60 + PlayData.instance.points;
-        SceneManager.LoadScene(4);
+        SceneManager.LoadScene("DeCamino");
     }
 
 

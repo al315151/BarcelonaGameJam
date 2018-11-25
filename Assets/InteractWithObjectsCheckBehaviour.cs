@@ -29,11 +29,11 @@ public class InteractWithObjectsCheckBehaviour : MonoBehaviour
                 //ESCENA DE CASA, VAMOS A ESCENA DE PC CASA
                 if (SceneManager.GetActiveScene().name == "Casa")
                 {
-                    SceneManager.LoadScene(1);
+                    SceneManager.LoadScene("UI_Test_Scene");
                 }
                 else if (SceneManager.GetActiveScene().name == "Oficina")
                 {
-                    SceneManager.LoadScene(3);
+                    SceneManager.LoadScene("Scripting Game");
                 }
             }
             
