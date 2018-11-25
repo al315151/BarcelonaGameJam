@@ -28,6 +28,30 @@ public class DesktopBehaviour : MonoBehaviour
     public DesktopWindowBehaviour vPotatoProgram_GO;
     public DesktopWindowBehaviour FranEatProgram_GO;
 
+    [Header("Games Related Variables")]
+    public GameObject codeProgram_Reference_GO;
+    public GameObject snakeProgram_Reference_GO;
+    public GameObject RPSProgram_Reference_GO;
+    public GameObject SpaceBattleProgram_Reference_GO;
+    public GameObject MazeProgram_Reference_GO;
+    public GameObject PongProgram_Reference_GO;
+
+    public GameObject snakeProgramIcon_GO;
+    public GameObject RPSProgramIcon_GO;
+    public GameObject SpaceBattleProgramIcon_GO;
+    public GameObject MazeIcon_GO;
+    public GameObject PongIcon_Program_GO;
+
+     bool snakeUnlocked;
+     bool RPSUnlocked;
+     bool spaceBattleUnlocked;
+     bool MazeUnlocked;
+     bool PongUnlocked;
+
+
+
+
+
     [Header("Images Public References")]
     //Image public references
     public Sprite DownloadPageSprite;
@@ -54,15 +78,17 @@ public class DesktopBehaviour : MonoBehaviour
 
     //ESTA VARIABLE VA DE 0 A 1.
     public float GameState;
+    bool PiracyActivated;
 
     [Header("Desktop Management Variables")]
     public TwitProperties[] tweetPole_GO;
     
 
+
     // Start is called before the first frame update
     void Start()
     {
-        currentState = DesktopState.Work;
+        currentState = DesktopState.Home;
         SetDestopIconsAndPrograms();
         GameState = 0;
     }
@@ -286,6 +312,37 @@ public class DesktopBehaviour : MonoBehaviour
         print("Cerramos el telon");
         this.gameObject.SetActive(false);
     }
+
+    public void UnlockGame(GameObject other)
+    {
+        if (other.name.Contains("Free"))
+        {
+            PiracyActivated = true;
+        }        
+        if (other.name.Contains("Snake"))
+        {
+            snakeUnlocked = true;
+        }
+        if (other.name.Contains("RPS"))
+        {
+            RPSUnlocked = true;
+        }
+        if (other.name.Contains("Maze"))
+        {
+            MazeUnlocked = true;
+        }
+        if (other.name.Contains("Pong"))
+        {
+            PongUnlocked = true;
+        }
+        if (other.name.Contains("SpaceBattle"))
+        {
+            spaceBattleUnlocked = true;
+        }
+
+    }
+
+   
 
 
 }
